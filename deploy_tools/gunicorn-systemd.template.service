@@ -5,7 +5,13 @@ Description = Gunicorn server for SITENAME
 Restart=on-failure
 User=vt
 WorkingDirectory=/home/vt/sites/SITENAME/source
-ExecStart=/home/vt/sites/SITENAME/virtualenv/bin/gunicorn --bind unix:/tmp/SITENAME.socket superlists.wsgi:application
+Environment=EMAIL_PASSWORD=SEKRIT
+
+ExecStart=/home/vt/sites/DOMAIN/virtualenv/bin/gunicorn \
+    --bind unix:/tmp/DOMAIN.socket \
+    --access-logfile access.log \
+    --error-logfile error.log \
+superlists.wsgi:application
 StartLimitInterval = 60
 StartLimitBurst = 10
 

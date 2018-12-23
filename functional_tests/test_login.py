@@ -21,6 +21,7 @@ class LoginTest(FunctionalTest):
             self.assertEqual(email.subject, subject)
             return email.body
 
+        time.sleep(20)
         email_id = None
         start = time.time()
         inbox = poplib.POP3_SSL('pop.yandex.ru')
@@ -68,6 +69,7 @@ class LoginTest(FunctionalTest):
         if not url_search:
             self.fail(f'Could not find url in email body:\n{body}')
         url = url_search.group(0)
+        print(url)
         self.assertIn(self.live_server_url, url)
 
         self.browser.get(url)
