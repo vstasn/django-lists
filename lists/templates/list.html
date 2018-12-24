@@ -11,3 +11,13 @@
         {% endfor %}
     </table>
 {% endblock %}
+
+{% block sharing %}
+    <div class="row">
+        <form method="POST" action="#">
+            <span>Share this list:</span>
+            <input class="form-control" name="sharee" type="text" />
+            {% csrf_token %}
+        </form>
+    <div>
+{% endblock %}
