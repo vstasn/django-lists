@@ -116,3 +116,4 @@ dmypy.json
 
 # MacOs
 .DS_Store
+functional_tests/screendumps
