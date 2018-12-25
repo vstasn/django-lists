@@ -15,15 +15,14 @@ class SharingTest(FunctionalTest):
     """sharing test"""
 
     def test_can_share_a_list_with_another_user(self):
-        """test: can share a list with another user"""
-        self.create_pre_authenticated_session("e@example.com")
+        self.create_pre_authenticated_session('e@example.com')
         e_browser = self.browser
         self.addCleanup(lambda: quit_if_possible(e_browser))
 
         oni_browser = webdriver.Firefox()
         self.addCleanup(lambda: quit_if_possible(oni_browser))
         self.browser = oni_browser
-        self.create_pre_authenticated_session("oni@example.com")
+        self.create_pre_authenticated_session('oni@example.com')
 
         self.browser = e_browser
         self.browser.get(self.live_server_url)
@@ -31,8 +30,8 @@ class SharingTest(FunctionalTest):
 
         share_box = list_page.get_share_box()
         self.assertEqual(
-            share_box.get_attribute("placeholder"),
-            "your-friend@example.com"
+            share_box.get_attribute('placeholder'),
+            'your-friend@example.com'
         )
 
         list_page.share_list_with('oni@example.com')
